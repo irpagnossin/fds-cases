@@ -2,10 +2,12 @@
 *.binfo
 *.csv
 *.end
+*.gz
 *.out
 *.prt5
 *.s3d
 *.sf
 *.sinfo
 *.smv
+*.tar
 *.txt
