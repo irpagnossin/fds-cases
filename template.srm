@@ -1,0 +1,26 @@
+#!/bin/bash
+#SBATCH --nodes=NODES  # Numero de Nós
+#SBATCH --ntasks-per-node=NTASKS_PER_NODE  # Numero de tarefas por Nó
+#SBATCH --ntasks=N_TASKS  # Numero total de tarefas MPI
+#SBATCH -p cpu_small  # Fila (partition) a ser utilizada
+#SBATCH -J CASE_NAME  # Nome do job
+#SBATCH --time=20:00:00  # Altera o tempo limite para 5 minutos
+
+FDS_JOB=$FDS_CASES_HOME/CASE_NAME/CASE_NAME.fds
+
+#Exibe os nós alocados para o Job
+echo $SLURM_JOB_NODELIST
+nodeset -e $SLURM_JOB_NODELIST
+
+cd $SLURM_SUBMIT_DIR
+
+#Configura os compiladores
+source /scratch/app/modulos/intel-psxe-2019.sh
+
+#Configura o executavel
+EXEC=$SCRATCH/../FDS/FDS6/bin/fds
+
+#exibe informações sobre o executável
+/usr/bin/ldd $EXEC
+
+srun -n $SLURM_NTASKS $EXEC $FDS_JOB
