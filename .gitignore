@@ -1,5 +1,6 @@
 *.bf
 *.binfo
+*.bnd
 *.csv
 *.end
 *.gz
@@ -7,6 +8,7 @@
 *.prt5
 *.s3d
 *.sf
+*.sz
 *.sinfo
 *.smv
 *.tar
